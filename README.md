@@ -1,38 +1,40 @@
-# 猫咪老师 · Nyanko Sensei
+# Nyanko Sensei · 猫咪老师
 
-一个用 Swift + AppKit 编写的 macOS 透明桌面伴侣。让圆滚滚的猫咪老师看向鼠标、做鬼脸、吃文件，也提醒你按时休息。
+English | [简体中文](README-zh.md)
 
-> 非官方同人项目，与《夏目友人帐》官方没有隶属或合作关系。代码与角色美术的授权范围不同，见 [素材说明](docs/ARTWORK.md)。
+A transparent macOS desktop companion built with Swift and AppKit. Let the round little Nyanko Sensei follow your cursor, make silly faces, eat files, and remind you to take a break.
 
-![满足与粉红泡泡](docs/images/satisfied.gif)
+> An unofficial fan project with no affiliation with the creators or rights holders of *Natsume's Book of Friends*. Code and character artwork have different licensing terms; see [Artwork](docs/ARTWORK.md).
 
-## 功能
+![Contentment with floating pink bubbles](docs/images/satisfied.gif)
 
-- **16 个方向的鼠标视线跟随**，直接读取系统鼠标位置。
-- **可修改的鼠标反应**：点击、长按、组合键、中键、滚轮和快速靠近。
-- **夸张表情与动作**：生气、惊恐、坏笑、醉酒、舒服、打嗝、满足、惊喜、张嘴吃饭，以及脑袋短暂变回「斑」。满足时有可关闭的粉红泡泡。
-- **吃文件**：拖入文件后移到 macOS 废纸篓，并能撤销上一批操作。
-- **本机提醒**：一次性或重复提醒、5 分钟后再提醒、25 分钟专注计时。
-- **小尺寸模式**：96 / 120 / 144 / 160 / 200 / 260 / 340 / 420 像素，默认 120。
-- 24 组图像素材，共 108 帧；无需网络、账号、辅助功能或录屏权限。
+## Features
 
-## 系统要求
+- **16-direction cursor tracking** using the system mouse position.
+- **Customizable mouse reactions** for clicks, long presses, modifier keys, the middle button, scrolling, and sudden approaches.
+- **Expressive reactions**: anger, horror, a mischievous grin, drunkenness, comfort, burping, contentment, delight, eating, and a brief head transformation into Madara. Optional pink bubbles float around him when he is satisfied.
+- **Eat files** by dragging them onto the pet to move them to macOS Trash, with batch-by-batch undo.
+- **Local reminders** with one-time or repeating schedules, a five-minute snooze, and a 25-minute focus timer.
+- **Eight sizes**: 96 / 120 / 144 / 160 / 200 / 260 / 340 / 420 pixels; the default is 120.
+- 24 image groups and 108 frames. No network connection, account, Accessibility permission, or Screen Recording permission is needed.
 
-- macOS 13 或更新版本。
-- Apple Silicon（arm64）或 Intel（x86_64）Mac；安装包必须与机器架构匹配。
-- 从源码构建需安装 Xcode Command Line Tools（包含 Swift 编译器）。
+## Requirements
 
-## 安装
+- macOS 13 or later.
+- An Apple Silicon (`arm64`) or Intel (`x86_64`) Mac. Use a package matching your Mac's architecture.
+- Xcode Command Line Tools, including the Swift compiler, to build from source.
 
-### 方法一：从源码构建（推荐）
+## Installation
 
-先在终端安装编译工具（已安装可跳过）：
+### Option 1: Build from source — recommended
+
+Install the developer tools if you do not already have them:
 
 ```sh
 xcode-select --install
 ```
 
-然后：
+Then clone, build, and launch:
 
 ```sh
 git clone https://github.com/Flipped23/nyanko-sensei.git
@@ -41,90 +43,90 @@ bash scripts/build.sh
 open build/猫咪老师.app
 ```
 
-构建产物在 `build/猫咪老师.app`。可以在 Finder 中把整个 `.app` 拖到「应用程序」文件夹，以后双击启动。程序不依赖源码目录，图片已打包在应用内。
+The app is created at `build/猫咪老师.app`. In Finder, drag the entire `.app` into **Applications**, then double-click it to launch. All runtime images are bundled inside the app; the source directory is not required afterward.
 
-默认编译本机架构，也可以指定：
+The scripts build for your current architecture by default. You can also specify one:
 
 ```sh
 ARCH=arm64 bash scripts/package.sh
-# Intel Mac 安装包：
+# Package for Intel Macs:
 ARCH=x86_64 bash scripts/package.sh
 ```
 
-压缩包输出到 `dist/`。指定另一架构只会编译，不会替你验证它在相应硬件上的运行效果。
+Packages are written to `dist/`. Cross-compiling does not verify that the app runs on the other architecture's hardware.
 
-### 方法二：下载 GitHub Actions 构建产物
+### Option 2: Download a GitHub Actions build
 
-打开 [Actions](https://github.com/Flipped23/nyanko-sensei/actions)，选择最近一次成功的 **Build macOS app**，在 **Artifacts** 下载 `nyanko-sensei-macos`。解压外层产物，再解压其中的应用安装包，将 `.app` 移入「应用程序」。下载 Actions 产物通常需要登录 GitHub。
+Open [Actions](https://github.com/Flipped23/nyanko-sensei/actions), select the latest successful **Build macOS app** run, and download `nyanko-sensei-macos` under **Artifacts**. Extract the artifact, then extract the app package inside it and move the `.app` to **Applications**. Downloading Actions artifacts generally requires signing in to GitHub.
 
-CI 使用 runner 的本机架构，具体以安装包文件名为准。项目使用本地临时签名，**未使用 Developer ID 签名，也未做 Apple 公证**。如果系统阻止打开，请先确认文件来源，再按 macOS 的应用打开提示操作。
+CI builds for the runner's native architecture; check the package filename. The app uses an ad hoc local signature and is **not Developer ID signed or notarized by Apple**. If macOS blocks it, verify the file's source before following the system's app-opening instructions.
 
-## 使用
+## Usage
 
-启动后，猫咪显示在桌面上，菜单栏也会出现 **猫咪老师**。
+After launch, the pet appears on your desktop and **猫咪老师** appears in the menu bar. The app's menus currently use Chinese; corresponding labels are included below.
 
-- **右键猫咪**或点菜单栏入口：打开动作、提醒和设置菜单。
-- **左键拖动**：移动位置；找不到时选择「移动到屏幕右下角」。
-- **调整大小**：右键 → 调整大小 → 120 像素（接近原生 Pets 大小）。小于 180 像素时隐藏贴身文字，提醒弹窗仍正常显示。
-- **看向鼠标**：鼠标在头部周围约 700 像素内时切换注视方向。播放主动触发的动作期间会暂时让位，动作结束后恢复。
-- **退出**：菜单栏 → 猫咪老师 → 退出猫咪老师。隐藏宠物仍保持提醒运行。
+- **Right-click the pet** or select its menu-bar item to open actions, reminders, and settings.
+- **Drag with the left mouse button** to move him. Choose `移动到屏幕右下角` to move him to the bottom-right corner if you lose track of him.
+- **Resize** through `调整大小`. The 120-pixel option is close to the native Pets size. Below 180 pixels, the attached text bubble is hidden; reminder dialogs still appear.
+- **Cursor tracking** selects a gaze direction within roughly 700 pixels of the head. A manually triggered reaction temporarily takes priority; tracking resumes when it finishes.
+- **Quit** through the menu-bar item → `退出猫咪老师`. Hiding the pet keeps the app and reminders running.
 
-### 默认鼠标反应
+### Default mouse reactions
 
-| 操作 | 反应 |
+| Input | Reaction |
 | --- | --- |
-| 单击 | 挥手 |
-| 双击 | 张嘴吃饭，不处理文件 |
-| 三击 | 脑袋短暂显现「斑」的真身 |
-| 长按，不拖动 | 舒服、被摸头 |
-| Option + 单击 | 贱兮兮坏笑 |
-| Shift + 单击 | 生气 |
-| 中键 | 打嗝 |
-| 滚轮 / 双指滚动 | 醉酒 |
-| 鼠标快速靠近 | 大惊失色 |
+| Single click | Wave |
+| Double-click | Open-mouth eating animation; no files are moved |
+| Triple-click | Briefly reveal Madara's true-form head |
+| Long press without dragging | Comfort / head pats |
+| Option + click | Mischievous grin |
+| Shift + click | Anger |
+| Middle click | Burp |
+| Mouse wheel / two-finger scroll | Drunkenness |
+| Quickly move the pointer toward him | Horror |
 
-在 **鼠标行为设置** 中可以修改这些绑定。也可以通过 **动作与表情** 菜单直接播放动作。
+Change these bindings in **Mouse behavior settings** (`鼠标行为设置`). You can also play reactions directly from **Actions and expressions** (`动作与表情`).
 
-### 吃文件与撤销
+### Eating files and undoing
 
-把 Finder 中的文件或文件夹拖到猫咪身体上；张嘴后松开，文件会移到**废纸篓**。程序不会清空废纸篓。
+Drag a file or folder from Finder onto the pet's body. Release it when his mouth opens to move it to **Trash**. The app never empties Trash.
 
-右键选择 **撤销上次吃掉的文件**，可恢复上一批，支持逐批撤销。恢复不会覆盖原位置已存在的同名文件；如果原目录不可写、已经消失，或文件已不在废纸篓，请在 Finder 中手动处理。
+Choose **Undo the last batch of eaten files** (`撤销上次吃掉的文件`) to restore the most recent batch. Repeat to undo earlier batches. Restoring never overwrites an existing file with the same name. If the original directory is missing or not writable, or the file is no longer in Trash, use Finder to handle it manually.
 
-可取消勾选 **拖入文件后丢到废纸篓**。系统目录、用户主目录、应用自身等路径会被拒绝。无需真的丢文件来喂食，双击或选择「喂一口」即可。
+Uncheck `拖入文件后丢到废纸篓` to disable this feature. Protected paths include system directories, your home directory, and the app itself. To feed him without moving files, double-click or choose `喂一口`.
 
-### 提醒
+### Reminders
 
-右键 → **添加提醒**，输入内容与时间；支持只提醒一次、每半小时、每小时、每天。到点会出现独立弹窗，可以确认或延后 5 分钟。**管理提醒**可以查看和删除。
+Choose **Add reminder** (`添加提醒`), enter a message and time, and select a one-time reminder or a repeat interval of 30 minutes, one hour, or one day. A dialog appears when it is due; acknowledge it or snooze for five minutes. Use **Manage reminders** (`管理提醒`) to view or delete entries.
 
-**程序需要保持运行。**退出后不会弹提醒；睡眠期间错过的提醒会在唤醒后补上。本项目不读取系统日历、提醒事项或任何云端账户。
+**The app must remain running.** Reminders do not appear after quitting. Reminders missed during sleep are checked when the Mac wakes. The app does not read your system Calendar, Reminders app, or cloud accounts.
 
-## 数据与隐私
+## Data and privacy
 
-位置、大小、绑定、提醒和文件撤销记录保存在：
+The pet's position, size, bindings, reminders, and file-undo history are stored locally at:
 
 ```text
 ~/Library/Application Support/NyankoCompanion/preferences.json
 ```
 
-撤销记录包含文件的原位置和废纸篓位置，均保存在本机。项目没有网络上传功能。不要将自己的 `preferences.json` 提交到 GitHub。
+Undo records contain the original and Trash locations of files. They stay on your Mac, and the app has no network upload feature. Do not commit your own `preferences.json` to GitHub.
 
-更新版本前退出旧进程，再打开新 `.app`；已有设置会保留。
+Quit the old process before opening an updated `.app`. Existing settings are preserved.
 
-## 项目结构
+## Project structure
 
 ```text
-Sources/NyankoCompanion/   Swift 源码，按模型、交互、窗口和绘制拆分
-Resources/                应用配置、图标、动画清单与透明 PNG 帧
-scripts/                  构建、打包、素材检查和运行检查
-.github/workflows/        macOS 编译与产物打包
-docs/                    开发说明、素材说明与预览
+Sources/NyankoCompanion/   Swift models, interactions, windows, and rendering
+Resources/                App configuration, icon, animation manifest, and PNG frames
+scripts/                  Build, packaging, resource checks, and runtime checks
+.github/workflows/        macOS build and artifact packaging
+docs/                     Development notes, artwork notes, and previews
 ```
 
-更详细的结构与测试方式见 [开发指南](docs/DEVELOPMENT.md)。欢迎提交 Issue 或 Pull Request，贡献前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
+See the [development guide](docs/DEVELOPMENT.md) for architecture and testing details. Issues and pull requests are welcome; read [CONTRIBUTING.md](CONTRIBUTING.md) before contributing. These supporting guides are currently in Chinese.
 
-## 许可证与致谢
+## License and credits
 
-项目代码使用 [MIT License](LICENSE)。角色形象、名称、动漫原图及相关第三方权利不属于该代码许可证的授权范围，详见 [ARTWORK.md](docs/ARTWORK.md)。公开仓库不包含用户提供的动漫截图、官方参考原图、个人设置、测试生成的文件或已编译应用。
+Project code is licensed under the [MIT License](LICENSE). Character designs, names, original anime artwork, and related third-party rights are outside that code license; see [ARTWORK.md](docs/ARTWORK.md). The public source tree excludes user-supplied anime screenshots, original official reference images, personal settings, generated test files, and compiled apps.
 
-猫咪老师 / 斑来自《夏目友人帐》。新图像以参考造型通过生成式图像工具制作，感谢原作与动画创作者。
+Nyanko Sensei / Madara is a character from *Natsume's Book of Friends*. New images were created using generative image tools with character references. Thanks to the original manga and anime creators.
