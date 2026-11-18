@@ -1,0 +1,98 @@
+{
+  "idle": {
+    "count": 6,
+    "duration": 180
+  },
+  "right": {
+    "count": 8,
+    "duration": 110
+  },
+  "left": {
+    "count": 8,
+    "duration": 110
+  },
+  "wave": {
+    "count": 4,
+    "duration": 180
+  },
+  "jump": {
+    "count": 5,
+    "duration": 160
+  },
+  "failed": {
+    "count": 8,
+    "duration": 150
+  },
+  "waiting": {
+    "count": 6,
+    "duration": 180
+  },
+  "working": {
+    "count": 6,
+    "duration": 170
+  },
+  "review": {
+    "count": 6,
+    "duration": 180
+  },
+  "lookA": {
+    "count": 8,
+    "duration": 150
+  },
+  "lookB": {
+    "count": 8,
+    "duration": 150
+  },
+  "angry": {
+    "count": 4,
+    "duration": 240
+  },
+  "horror": {
+    "count": 4,
+    "duration": 240
+  },
+  "smug": {
+    "count": 4,
+    "duration": 240
+  },
+  "drunk": {
+    "count": 4,
+    "duration": 240
+  },
+  "burp": {
+    "count": 1,
+    "duration": 220
+  },
+  "satisfied": {
+    "count": 1,
+    "duration": 220
+  },
+  "surprise": {
+    "count": 1,
+    "duration": 220
+  },
+  "comfy": {
+    "count": 1,
+    "duration": 220
+  },
+  "sleepy": {
+    "count": 1,
+    "duration": 220
+  },
+  "coy": {
+    "count": 1,
+    "duration": 220
+  },
+  "tipsy": {
+    "count": 1,
+    "duration": 220
+  },
+  "eat": {
+    "count": 6,
+    "duration": 200
+  },
+  "transform": {
+    "count": 6,
+    "duration": 320
+  }
+}

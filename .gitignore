@@ -1,0 +1,17 @@
+.DS_Store
+._*
+.build/
+build/
+dist/
+*.app/
+*.dSYM/
+*.xcuserstate
+xcuserdata/
+.env
+.env.*
+!.env.example
+preferences.json
+*-preferences.json
+*-report.json
+__pycache__/
+*.pyc

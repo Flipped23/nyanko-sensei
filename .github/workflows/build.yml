@@ -1,0 +1,21 @@
+name: Build macOS app
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate animation resources
+        run: python3 scripts/check-resources.py
+      - name: Build and package
+        run: bash scripts/package.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nyanko-sensei-macos
+          path: dist/*.zip
