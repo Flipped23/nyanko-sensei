@@ -1,4 +1,4 @@
-# 猫咪老师 · Nyanko Sensei
+# Nyanko Sensei
 
 [English](README.md) | 简体中文
 
